@@ -14,7 +14,7 @@ This plugin offers two APIs:
 
 ## APIs
 
-### check_hash API
+### 1. check_hash API
 
 When you call `check_hash` api, the following things will happen:
 
@@ -37,7 +37,7 @@ curl http://localhost:8888/v1/blacklist/check_hash -w "\n"
 ```
 
 
-###submit_hash API
+### 2. submit_hash API
 
 When you call `submit_hash` api, it will simple submit your `local_hash` to `theblacklist` contract via `sethash` action. One thing you should notice is that, you should be a registered BP first in order to call `submit_hash`, otherwise, it will fail.
 
@@ -117,7 +117,4 @@ You should see logs about blacklis_plugin after you successfully started your no
 
 Add support for other types of blacklist/whitelist
 
-
--
-
-Built with Love by EOSLaoMao Team, peace :)
+- Built with Love by EOSLaoMao Team, peace :)
