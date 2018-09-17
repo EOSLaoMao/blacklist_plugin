@@ -3,7 +3,7 @@
 
 ## About
 
-`blacklist_plguin` is built to faciliate BPs' blacklist managing job.
+`blacklist_plguin` is built to faciliate BPs' blacklist managing job. its built on top of `theblacklist` contract, for those who dont know, check it out: https://github.com/eoslaomao/theblacklist
 
 This plugin offers two APIs:
 
@@ -18,8 +18,8 @@ This plugin offers two APIs:
 
 When you call `check_hash` api, the following things will happen:
 
-1. Fetch `actor-blacklist` you configured, and calculate a hash of it, `local_hash`.
-2. Fetch `actor-blacklist` from `theblacklist` contract onchain, and calculate a hash of it, `ecaf_hash`.
+1. Fetch `actor-blacklist` you configured, and calculate a hash of it, save it to `local_hash`.
+2. Fetch `actor-blacklist` from `theblacklist` contract onchain, and calculate a hash of it, save it to `ecaf_hash`.
 3. Fetch `producerjson` table data from `theblacklist` contract onchain, try to find the hash you(BP) have submitted to `theblacklist` contract, `submitted_hash`.
 
 then the API output these hashes to you:
@@ -39,7 +39,7 @@ curl http://localhost:8888/v1/blacklist/check_hash -w "\n"
 
 ### 2. submit_hash API
 
-When you call `submit_hash` api, it will simple submit your `local_hash` to `theblacklist` contract via `sethash` action. One thing you should notice is that, you should be a registered BP first in order to call `submit_hash`, otherwise, it will fail.
+When you call `submit_hash` api, it will simply submit your `local_hash` to `theblacklist` contract via `sethash` action. One thing you should notice is that, you should be a registered BP first in order to call `submit_hash`, otherwise, it will fail.
 
 ```
 curl http://localhost:8873/v1/blacklist/submit_hash -w "\n"
@@ -51,7 +51,7 @@ curl http://localhost:8873/v1/blacklist/submit_hash -w "\n"
 curl http://localhost:8888/v1/blacklist/check_hash -w "\n"
 
 {
-  "msg":"local/submitted/eacf hash should all match!"
+  "msg":"OK"
   "local_hash":"59f92ca61b2a4763b2e036970c2512646b44040e3c49d926f2e3a22e0a70fdf2",
   "submitted_hash":"59f92ca61b2a4763b2e036970c2512646b44040e3c49d926f2e3a22e0a70fdf2",
   "ecaf_hash":"59f92ca61b2a4763b2e036970c2512646b44040e3c49d926f2e3a22e0a70fdf2",
@@ -111,10 +111,11 @@ You should see logs about blacklis_plugin after you successfully started your no
 ```
 
 # Feedback & development
-- Any feedbacks and PR are welcome
+- Any feedbacks and PRs are welcome
 
 # TODO
 
 Add support for other types of blacklist/whitelist
 
-- Built with Love by EOSLaoMao Team, peace :)
+---
+Built with Love by EOSLaoMao Team, peace :)
