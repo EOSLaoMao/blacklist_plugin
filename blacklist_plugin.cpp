@@ -135,7 +135,14 @@ namespace eosio {
               if (row["type"] == "actor-blacklist") {
                  for ( auto &account : row["accounts"].get_array() ) {
                     //ilog("account: ${a}\n", ("a", account));
-                    accounts.push_back(account.as_string());
+                    if (row["action"] == "add") {
+                      accounts.push_back(account.as_string());
+                    } else if (row["action"] == "remove") {
+                      auto itr = std::find(vector.begin(), vector.end(), item);
+                      if (itr != vector.end()) {
+                         accounts.erase(itr);
+                      }
+                    }
                  }
               }
             }
