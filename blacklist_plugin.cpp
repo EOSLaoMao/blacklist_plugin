@@ -132,7 +132,6 @@ namespace eosio {
             auto rows = ro_api.get_table_rows(p).rows;
             //rows is a vector<fc::variant> type
             for ( auto &row : rows ) {
-              action = ;
               if (row["type"] == "actor-blacklist") {
                  for ( auto &account : row["accounts"].get_array() ) {
                     //ilog("account: ${a}\n", ("a", account));
