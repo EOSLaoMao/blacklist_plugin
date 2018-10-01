@@ -138,8 +138,8 @@ namespace eosio {
                     if (row["action"] == "add") {
                       accounts.push_back(account.as_string());
                     } else if (row["action"] == "remove") {
-                      auto itr = std::find(vector.begin(), vector.end(), item);
-                      if (itr != vector.end()) {
+                      auto itr = std::find(accounts.begin(), accounts.end(), account.as_string());
+                      if (itr != accounts.end()) {
                          accounts.erase(itr);
                       }
                     }
